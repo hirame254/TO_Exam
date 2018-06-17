@@ -14,18 +14,18 @@ function jankenGame() {
     if (person_hand == null) {
         return
     }
-    const pc_hand = getRandomNumber(0, 2)
+    const pc_hand = String(getRandomNumber())
     console.log(poi)
     console.log('コンピュータ：' + listobj[pc_hand])
     console.log('あなた：' + listobj[person_hand])
     const result = jankenJudge(pc_hand, person_hand)
-    if (result == draw) {
+    if (result === draw) {
         console.log('あいこでしょ！')
         jankenGame()
-    } else if (result == pc_win) {
+    } else if (result === pc_win) {
         console.log('コンピュータの勝ち')
         return
-    } else if (result == person_win) {
+    } else if (result === person_win) {
         console.log('あなたの勝ち')
         return
     }
@@ -45,9 +45,9 @@ function jankenJudge(pc_hand, person_hand) {
     }
 }
 
-function getRandomNumber(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    const random_number = Math.floor(Math.random() * (max - min + 1))
+function getRandomNumber() {
+    min = Math.ceil(0);
+    max = Math.floor(2);
+    const random_number = Math.floor(Math.random() * 3)
     return random_number;
 }

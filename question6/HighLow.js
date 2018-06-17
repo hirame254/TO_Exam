@@ -1,24 +1,28 @@
-const answer_number = Math.floor(Math.random() * 100 + 1)
+const answerNumber = Math.floor(Math.random() * 101)
 let counter = 0
+let number
+
 
 console.log('0-100で数字を当てて')
 highLowGame()
 
 function highLowGame() {
-    counter++
-    const input_number = window.prompt('0-100で数字を入れてください')
-    if (input_number == null) {
-        return
-    }
-    console.log(input_number)
-    if (answer_number == input_number) {
+
+    do {
+        const inputNumber = window.prompt('0-100で数字を入れてください')
+        if (inputNumber == null) {
+            return
+        }
+        counter++
+        number = Number(inputNumber)
+        console.log(number)
+        if (answerNumber > number) {
+            console.log('もっと上')
+        } else if (answerNumber < number) {
+            console.log('もっと下')
+        }
+    } while (answerNumber !== number) {
         console.log('正解！・・・・・' + counter + '回目で当てました')
         return
-    } else if (answer_number > input_number) {
-        console.log('もっと上')
-        highLowGame()
-    } else if (answer_number < input_number) {
-        console.log('もっと下')
-        highLowGame()
     }
 }

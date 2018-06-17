@@ -1,76 +1,58 @@
-const answer_number = getRandomNumberNoDup()
-let input_counter = 0
-let hit_counter = 0
-let blow_counter = 0
-let input_position = 0
-let answer_position = 0
+const answerNumber = String(getRandomNumberNoDup())
+console.log(answerNumber)
+let inputCounter = 0
+
+
 
 console.log('4桁の数字は？')
 hitBlowGame()
 
 function hitBlowGame() {
-    const input_number = window.prompt('数字が重複しない4桁の数字を入れてください')
-    if (input_number == null) {
+    let hitCounter = 0
+    let blowCounter = 0
+    const inputNumber = window.prompt('数字が重複しない4桁の数字を入れてください')
+    if (inputNumber == null) {
         return
     }
-    console.log(input_number)
-    input_counter++
-    for (const input_element of input_number) {
-        input_position++
-        answer_position = 0
-        for (const answer_element of answer_number) {
-            answer_position++
-            if (input_element == answer_element) {
-                blow_counter++
-                if (input_position == answer_position) {
-                    hit_counter++
-                }
-                break
-            }
-        }
+    console.log(inputNumber)
+    inputCounter++
 
-    }
-    if (answer_number == input_number) {
-        console.log(input_counter + '回で正解！')
+    if (answerNumber === inputNumber) {
+        console.log(inputCounter + '回で正解！')
         return
     } else {
-        console.log('はずれ！　' + hit_counter + 'Hits,' + blow_counter + 'Blow')
-        hit_counter = 0
-        blow_counter = 0
-        input_position = 0
-        answer_position = 0
+        for (let inputElementIndex = 0; inputElementIndex < 4; inputElementIndex++) {
+            for (let answerElementIndex = 0; answerElementIndex < 4; answerElementIndex++) {
+                if (inputNumber[inputElementIndex] === answerNumber[answerElementIndex]) {
+                    if (inputElementIndex === answerElementIndex) {
+                        hitCounter++
+                    } else {
+                        blowCounter++
+                    }
+                }
+            }
+        }
+        console.log('はずれ！　' + hitCounter + 'Hits,' + blowCounter + 'Blow')
         hitBlowGame()
     }
 }
 
 function getRandomNumberNoDup() {
-    let counter = 0
-    let number_str = ''
-    for (; ;) {
-        counter++
-        const random_number = getRandomNumber()
-        if (counter == 1) {
-            number_str = String(random_number)
-        } else {
-            if (!(checkDuplication(number_str, random_number))) {
-                number_str += String(random_number)
-            }
+    let numberString = ''
+    do {
+        const randomNumber = Math.floor(Math.random() * 10)
+        if (!(checkDuplication(numberString, randomNumber))) {
+            numberString += String(randomNumber)
         }
-        if (number_str.length == 4) {
-            break
-        }
-
+    } while (numberString.length < 4) {
+        return numberString
     }
-    return number_str
 }
 
-function getRandomNumber() {
-    return Math.floor(Math.random() * 10)
-}
 
 function checkDuplication(str, number) {
-    for (const str_element of str) {
-        if (str_element == String(number)) {
+    for (const element of str) {
+        if (element === String(number)) {
             return true
         }
     }

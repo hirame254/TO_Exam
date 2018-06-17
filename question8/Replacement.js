@@ -14,17 +14,16 @@ const orghash = {
 }
 
 
-console.log(to_ury(orghash))
+console.log(toUry(orghash))
 
-function to_ury(hash) {
+function toUry(hash) {
     const keys = Object.keys(hash)
     for (const key of keys) {
         if (key != "text") {
-            let obj = hash[key]
-            obj = to_ury(obj)
+            let layerObj = hash[key]
+            layerObj = toUry(layerObj)
         } else {
-            const value = hash[key].replace("foo", "uryyyy!!")
-            hash[key] = value
+            hash[key] = hash[key].replace("foo", "uryyyy!!")
         }
     }
     return hash

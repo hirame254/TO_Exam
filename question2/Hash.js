@@ -1,19 +1,18 @@
-const inputstr = window.prompt('文字列間に半角スペースをいれて、何か入力してください')
-if (inputstr != null) {
+const inputString = window.prompt('文字列間に半角スペースをいれて、何か入力してください')
+if (inputString != null) {
     hash()
 }
 
 
 function hash() {
-    const strarray = inputstr.split(" ")
-    const first_cnt = 1
-    const hashobj = new Object()
+    const stringArray = inputString.split(" ")
+    const hashobj = {}
 
-    for (const element of strarray) {
-        if (hashobj[element] === undefined) {
-            hashobj[element] = first_cnt
-        } else {
+    for (const element of stringArray) {
+        if (hashobj[element]) {
             hashobj[element] += 1
+        } else {
+            hashobj[element] = 1
         }
     }
 
