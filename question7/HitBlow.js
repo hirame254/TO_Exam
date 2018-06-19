@@ -33,7 +33,6 @@ function hitBlowGame() {
             }
         }
         console.log('はずれ！　' + hitCounter + 'Hits,' + blowCounter + 'Blow')
-        hitBlowGame()
     }
 }
 
@@ -44,9 +43,9 @@ function getRandomNumberNoDup() {
         if (!(checkDuplication(numberString, randomNumber))) {
             numberString += String(randomNumber)
         }
-    } while (numberString.length < 4) {
-        return numberString
-    }
+    } while (numberString.length < 4)
+    return numberString
+
 }
 
 

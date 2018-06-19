@@ -21,8 +21,8 @@ function highLowGame() {
         } else if (answerNumber < number) {
             console.log('もっと下')
         }
-    } while (answerNumber !== number) {
-        console.log('正解！・・・・・' + counter + '回目で当てました')
-        return
-    }
+    } while (answerNumber !== number)
+    console.log('正解！・・・・・' + counter + '回目で当てました')
+    return
+
 }

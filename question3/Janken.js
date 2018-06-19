@@ -46,8 +46,6 @@ function jankenJudge(pc_hand, person_hand) {
 }
 
 function getRandomNumber() {
-    min = Math.ceil(0);
-    max = Math.floor(2);
     const random_number = Math.floor(Math.random() * 3)
     return random_number;
 }
